@@ -20,7 +20,6 @@
 
 .child {
     /* border: 1px solid black; */
-    align-items: center;
 }
 
 .p1 {
@@ -39,7 +38,7 @@
 }
 
 .p3 {
-    background-color: rgb(230, 171, 62);
+    background-color: rgb(230, 141, 62);
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 2;
