@@ -1,0 +1,47 @@
+* {
+    margin: 10px;
+    padding: 0;
+}
+
+.shouldbeyellow {
+    background-color: yellow;
+}
+
+.shouldbebold, .shouldbeunderlined {
+    font-weight: bold;
+}
+
+.shouldbeunderlined {
+    text-decoration: underline;
+    margin-left: 40px;
+}
+
+.catsenses {
+    margin-left: 80px;
+}
+
+.historylist {
+    list-style: lower-roman;
+    margin-left: 40px;
+}
+
+.picture {
+text-align: center;
+}
+
+img {
+    border: 5px solid orangered;
+}
+
+.difference {
+    border: 3px solid red;
+    text-align: center;
+    color: red;
+}
+
+table {
+    text-align: center;
+}
+th,td {
+    border: 2px solid black;
+}

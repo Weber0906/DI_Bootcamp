@@ -59,10 +59,46 @@ i {
     /* border: 1px solid black; */
 }
 
-.buttons {
+.discount {
+    display: inline-block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 45px;
+    background-color: lightgreen;
+    top: 40px;
+    left: 40px;
     text-align: center;
+    padding-top: 10px;
 }
 
+.new {
+    display: inline-block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 45px;
+    background-color: red;
+    top: 40px;
+    right: 40px;
+    text-align: center;
+    padding-top: 10px;
+
+}
+
+.was {
+    text-decoration: line-through;
+    padding: 10px;
+}
+
+.buttons {
+    text-align: center;
+    
+}
+
+.buttons:hover {
+    background-color: rebeccapurple;
+}
 img {
     width: 200px;
     height: auto;
@@ -71,7 +107,7 @@ img {
     display: block;
     position: fixed;
     bottom: 0;
-    height: 100px;
+    height: 50px;
     width: 100vw;
     background-color: black;
     color: white;
