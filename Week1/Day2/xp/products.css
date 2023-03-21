@@ -121,3 +121,36 @@ img {
     text-align: center;
     padding-top: 2rem;
 }
+
+@media screen and (min-device-width: 320px) and (max-device-width: 414px) {
+        
+    .background { 
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 896px !important;
+    margin: 0 auto;
+}
+
+}
+
+
+
+@media only screen and (min-device-width: 415px) and (max-device-width: 920px) {
+
+.background  { 
+background-size: cover !important;
+background-repeat: no-repeat !important;
+height: 1200px !important;
+
+}
+}
+
+@media only screen and (min-device-width: 921px) and (max-device-width: 2460px) {
+
+.background  { 
+background-size: cover !important;
+background-repeat: no-repeat !important;
+height: 1200px !important;
+
+}
+}
