@@ -5,10 +5,10 @@
     font-family: Fontawesome;
 }
 
-/* .container {
+.container {
     width: 100vw;
     height: 100vh;
-} */
+}
 
 .header {
     background-color: rgb(0, 0, 0);
@@ -28,13 +28,13 @@ i {
 }
 
 .navbar {
-    height: 100px;
+    display: inline-block;
+    position: relative;
     background-color: black;
     display: block;
-    position: relative;
     float: right;
     text-align: right;
-    padding: 2.2rem;
+    padding: 1.2rem;
     color: white;
 }
 
@@ -102,6 +102,13 @@ i {
 img {
     width: 200px;
     height: auto;
+}
+
+.hidden {
+    display: inline-block;
+    visibility: hidden;
+    height: 200px;
+    width: 100vw;
 }
 .footer {
     display: block;
