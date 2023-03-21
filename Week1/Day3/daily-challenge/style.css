@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container, .p {
+    display: grid;
+    grid-template-columns: repeat(8, 200px);
+    grid-template-rows: repeat(8, 200px);
+    justify-content: space-between;
+    align-content: space-evenly;
+    /* border: 1px solid black; */
+    
+   
+    
+}
+
+div {
+    
+    /* border: 1px solid black; */
+    gap: 10px;
+    /* background-color: yellow; */
+}
+
+.p1, .p9, .p17, .p25, .p8, .p16, .p24, .p32 {
+    background-color: yellow;
+}
