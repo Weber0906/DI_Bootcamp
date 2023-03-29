@@ -1,0 +1,27 @@
+Hey there! I checked your code for the first daily challenge problem, and while it's a good start,
+there are a couple of things you could improve:
+
+First, you should ask the user to input a word, so that your code can work with any input string.
+
+Second, you can simplify your code by creating an empty dictionary first,
+and then adding each letter to the dictionary with an empty list as the value.
+
+Finally, you can loop through the string using the enumerate function to get both the index and the letter at each position. 
+Then you can add the index to the list for the current letter in the dictionary.
+
+Here's an example code that you can use as a reference:
+
+word = input('Enter a word: ')
+
+frequencies = {}
+
+for index, letter in enumerate(word):
+    if letter not in frequencies:
+        frequencies[letter] = []
+    frequencies[letter].append(index)
+
+print(frequencies)
+
+I hope this helps you! Let me know if you have any questions.
+
+
