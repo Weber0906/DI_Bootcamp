@@ -60,20 +60,6 @@
 #     France: blue,
 #     Spain: red,
 #     US: pink, green
-
-brand = {"name": "Zara",
-         "creation_date": "1975",
-         "creator_name": "Amancio Ortega Gaona",
-         "type_of_clothes": ["men", "women", "children", "home"],
-         "international_competitors": ["Gap", "H&M", "Benetton"],
-         "number_stores": "7000",
-         "major_color": {"France": "blue",
-                         "Spain": "red",
-                         "US": ["pink", "green"]
-                         },
-         }
-
-
 # 2. Create a dictionary called brand which value is the information from part one (turn the info into keys and values).
 # 3. Change the number of stores to 2.
 # 4. Print a sentence that explains who Zaras clients are.
@@ -88,3 +74,90 @@ brand = {"name": "Zara",
 
 # creation_date: 1975
 # number_stores: 10 000
+
+brand = {"name": "Zara",
+         "creation_date": "1975",
+         "creator_name": "Amancio Ortega Gaona",
+         "type_of_clothes": ["men", "women", "children", "home"],
+         "international_competitors": ["Gap", "H&M", "Benetton"],
+         "number_stores": "7000",
+         "major_color": {"France": "blue",
+                         "Spain": "red",
+                         "US": ["pink", "green"]}
+         }
+
+brand.update({"number_stores": "2"})
+brand.update({"country_creation": "Spain"})
+
+if "international_competitors" in brand:
+    print("Present")
+    brand["international_competitors"] += ["Desigual"]
+else:
+    print("Not Present")
+
+del brand["creation_date"]
+
+
+print(brand["international_competitors"][3])
+
+brand_list = [brand]
+print(brand_list[0]["major_color"]["US"])
+
+print("Zara's clients are generally young people")
+
+print("Length : %d" % len(brand))
+
+print(brand.keys())
+
+print(brand)
+
+more_on_zara = {"creation_date": "1975", "number_stores": "10 ˜000"}
+
+
+# Exercise 4 : Disney Characters
+# Instructions
+# Use this list :
+# users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+# Analyse these results :
+# #1/
+# >>> print(disney_users_A)
+# {"Mickey": 0, "Minnie": 1, "Donald": 2, "Ariel": 3, "Pluto": 4}
+# #2/
+# >>> print(disney_users_B)
+# {0: "Mickey",1: "Minnie", 2: "Donald", 3: "Ariel", 4: "Pluto"}
+# #3/
+# >>> print(disney_users_C)
+# {"Ariel": 0, "Donald": 1, "Mickey": 2, "Minnie": 3, "Pluto": 4}
+# Use a for loop to recreate the 1st result. Tip : don’t hardcode the numbers.
+# Use a for loop to recreate the 2nd result. Tip : don’t hardcode the numbers.
+# Use a method to recreate the 3rd result. Hint: The 3rd result is sorted alphabetically.
+# Only recreate the 1st result for:
+# The characters, which names contain the letter “i”.
+# The characters, which names start with the letter “m” or “p”.
+
+users = ["Mickey", "Minnie", "Donald", "Ariel", "Pluto"]
+print(users)
+users_value = list()
+for i in range(5):
+    users_value.append(i)
+print(users_value)
+result = dict(zip(users, users_value))
+print(result)
+
+result2 = dict(zip(users_value, users))
+print(result2)
+
+users_sorted = sorted(users)
+result3 = dict(zip(users_sorted, users_value))
+print(result3)
+
+i_list = []
+for i in users:
+    i_list.append(i)
+print(i_list)
+
+names_with_i = []
+for s in users:
+    if s == i:
+        names_with_i.append(s)
+        print(names_with_i[0])
