@@ -29,21 +29,31 @@
 
 # total = 0
 
-# while True:
-#     age = family {: 0}
+# family = {}
 
-#     if age == "quit":
+# while True:
+#     name = input("Enter your name:")
+#     age = input("Enter your age:")
+
+#     if age == "q" or name == "q":
 #         break
+
 #     age = int(age)
-#     if age < 3:
+#     if age <= 3:
+#         price = 0
 #         print("Your ticket is free")
 #     elif age < 12:
+#         price = 10
 #         print("Your ticket is $10")
-#         total += 10
+#         total += price
 #     else:
+#         price = 15
 #         print("Your ticket is $15")
-#         total += 15
+#         total += price
+
+#     family[name] = {'age': age, 'ticket': price}
 # print(total)
+# print(family)
 
 # Exercise 3: Zara
 
@@ -75,43 +85,43 @@
 # creation_date: 1975
 # number_stores: 10 000
 
-brand = {"name": "Zara",
-         "creation_date": "1975",
-         "creator_name": "Amancio Ortega Gaona",
-         "type_of_clothes": ["men", "women", "children", "home"],
-         "international_competitors": ["Gap", "H&M", "Benetton"],
-         "number_stores": "7000",
-         "major_color": {"France": "blue",
-                         "Spain": "red",
-                         "US": ["pink", "green"]}
-         }
+# brand = {"name": "Zara",
+#          "creation_date": "1975",
+#          "creator_name": "Amancio Ortega Gaona",
+#          "type_of_clothes": ["men", "women", "children", "home"],
+#          "international_competitors": ["Gap", "H&M", "Benetton"],
+#          "number_stores": "7000",
+#          "major_color": {"France": "blue",
+#                          "Spain": "red",
+#                          "US": ["pink", "green"]}
+#          }
 
-brand.update({"number_stores": "2"})
-brand.update({"country_creation": "Spain"})
+# brand.update({"number_stores": "2"})
+# brand.update({"country_creation": "Spain"})
 
-if "international_competitors" in brand:
-    print("Present")
-    brand["international_competitors"] += ["Desigual"]
-else:
-    print("Not Present")
+# if "international_competitors" in brand:
+#     print("Present")
+#     brand["international_competitors"] += ["Desigual"]
+# else:
+#     print("Not Present")
 
-del brand["creation_date"]
+# del brand["creation_date"]
 
 
-print(brand["international_competitors"][3])
+# print(brand["international_competitors"][3])
 
-brand_list = [brand]
-print(brand_list[0]["major_color"]["US"])
+# brand_list = [brand]
+# print(brand_list[0]["major_color"]["US"])
 
-print("Zara's clients are generally young people")
+# print("Zara's clients are generally young people")
 
-print("Length : %d" % len(brand))
+# print("Length : %d" % len(brand))
 
-print(brand.keys())
+# print(brand.keys())
 
-print(brand)
+# print(brand)
 
-more_on_zara = {"creation_date": "1975", "number_stores": "10 ˜000"}
+# more_on_zara = {"creation_date": "1975", "number_stores": "10 ˜000"}
 
 
 # Exercise 4 : Disney Characters
@@ -136,11 +146,11 @@ more_on_zara = {"creation_date": "1975", "number_stores": "10 ˜000"}
 # The characters, which names start with the letter “m” or “p”.
 
 users = ["Mickey", "Minnie", "Donald", "Ariel", "Pluto"]
-print(users)
+# print(users)
 users_value = list()
 for i in range(5):
     users_value.append(i)
-print(users_value)
+# print(users_value)
 result = dict(zip(users, users_value))
 print(result)
 
@@ -151,13 +161,13 @@ users_sorted = sorted(users)
 result3 = dict(zip(users_sorted, users_value))
 print(result3)
 
-i_list = []
-for i in users:
-    i_list.append(i)
-print(i_list)
+matches = [match for match in users if "i" in match]
+print(matches[0])
 
-names_with_i = []
-for s in users:
-    if s == i:
-        names_with_i.append(s)
-        print(names_with_i[0])
+check = 'm'
+result = [idx for idx in users if idx.upper().startswith(check.upper())]
+print(result[0])
+
+check = 'p'
+result1 = [idx for idx in users if idx.upper().startswith(check.upper())]
+print(result1[0])
