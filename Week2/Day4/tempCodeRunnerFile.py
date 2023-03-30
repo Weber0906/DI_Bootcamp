@@ -1,2 +1,1 @@
-print(message2)
-# print(message3)
+show_magicians(magician_names)
