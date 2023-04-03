@@ -195,6 +195,8 @@ ramat_gan_safari.add_animal("Elefant")
 ramat_gan_safari.add_animal("Camel")
 ramat_gan_safari.add_animal("Bear")
 ramat_gan_safari.add_animal("Antilop")
+ramat_gan_safari.add_animal("Baboon")
+ramat_gan_safari.add_animal("Badger")
 
 ramat_gan_safari.sell_animal("Crocodile")
 ramat_gan_safari.sell_animal("Parrot")

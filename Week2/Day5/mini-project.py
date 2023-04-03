@@ -1,18 +1,15 @@
-from random import randrange
+# board
+def draw_board():
+    a = ('\n* * * * * * * * * * * * * * *  *')
+    b = ('\n*  ________ ________ ________  *')
+    c = (
+        '\n* |   {}   |   {}   |   {}   | *'.format(values[0], values[1], values[2]))
+    d = (
+        '\n* |   {}   |   {}   |   {}   | *'.format(values[3], values[4], values[5]))
+    e = (
+        '\n* |   {}   |   {}   |   {}   | *'.format(values[6], values[7], values[8]))
+    f = ('\n* |        |        |        | *')
+    print(a, b, f, c, f, b, f, d, f, b, f, e, f, b, a)
 
-#
-# the function accepts one parameter containing the board's current status
-# and prints it out to the console
-#
 
-
-def DisplayBoard(board):
-    # print(board)
-    for i in range(0, len(board), 3):
-        print("+-------"*3 + "+")
-        print("|       "*3 + "|")
-        print("|   " + str(board[i]) +
-              "   |   " + str(board[i + 1]) +
-              "   |   " + str(board[i + 2]) + "   |   ")
-        print("|       "*3 + "|")
-    print("+-------"*3 + "+")
+draw_board(values)

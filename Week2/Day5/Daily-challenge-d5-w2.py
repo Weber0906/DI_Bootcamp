@@ -9,4 +9,7 @@
 words = input("Enter comma separated words: ")
 
 sorted_words = [word for word in words.split(",")]
-print(",".join(sorted(list(set(sorted_words)))))
+
+print(sorted_words)
+
+print(",".join(sorted(sorted_words)))
