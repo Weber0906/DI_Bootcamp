@@ -1,2 +1,1 @@
-for a in range(20, 20):
-    #     print('*')
+score_board[player_won] = score_board[player_won]
