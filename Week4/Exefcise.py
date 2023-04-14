@@ -18,7 +18,7 @@
 filename = 'sample.txt'
 
 text = ''
-
+# r read
 with open(filename, 'r') as file:
     text = file.read()
 
