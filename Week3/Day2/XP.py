@@ -5,6 +5,9 @@
 # Create a list called all_cats, which holds three cat instances : one Bengal, one Chartreux and one Siamese.
 # Those three cats are Sara’s pets. Create a variable called sara_pets which value is an instance of the Pet class, and pass the variable all_cats to the new instance.
 # Take all the cats for a walk, use the walk method.
+import random
+
+
 class Pets():
     def __init__(self, animals):
         self.animals = animals
@@ -85,7 +88,7 @@ class Dog:
 
 
 dog1 = Dog('Bob', 7, 65)
-dog2 = Dog('Fff', 4, 60)
+dog2 = Dog('Swift', 4, 60)
 dog3 = Dog('Python', 3, 38)
 
 dog1.bark()
@@ -111,3 +114,32 @@ dog1.fight(dog2)
 # “dog_name stands on his back legs”.
 # “dog_name shakes your hand”.
 # “dog_name plays dead”.
+
+
+class PetDog(Dog):
+    def __init__(self, name, age, weight):
+        super().__init__(name, age, weight)
+        self.trained = False
+
+    def train(self):
+        print(self.bark())
+        self.trained = True
+
+    def play(self, *args):
+        dog_names = ", ".join([dog.name for dog in args])
+        print(f"{dog_names} all play together")
+
+    def do_a_trick(self):
+        if self.trained:
+            tricks = ["does a barrel roll", "stands on his back legs",
+                      "shakes your hand", "plays dead"]
+            trick = random.choice(tricks)
+            print(f"{self.name} {trick}")
+        else:
+            print(f"{self.name} is not trained yet")
+
+
+pet_dog1 = PetDog("Java", 4, 15)
+pet_dog1.train()
+pet_dog1.do_a_trick()
+pet_dog1.play(dog1, dog2, dog3, pet_dog1)
