@@ -36,8 +36,8 @@ class Circle:
         new_circle = Circle(radius_combined)
         return new_circle
 
-    def __lt__(self, other_circle)
-    return self.radius < other_circle.radius
+    def __lt__(self, other_circle):
+        return self.radius < other_circle.radius
 
 
 c1 = Circle(2.0)
@@ -56,4 +56,4 @@ print("Area", c2.area)
 
 c3 = c1 + c2
 
-print(new)
+print(c3)

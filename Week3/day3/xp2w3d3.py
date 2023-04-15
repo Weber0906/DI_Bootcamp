@@ -4,6 +4,7 @@
 # In a file namedexercise_one.py import and the function
 # Hint: You can use the the following syntaxes:
 
+from faker import Faker
 import func
 import random
 import string
@@ -98,21 +99,87 @@ minutes_lived(birthdate)
 
 def next_holiday():
 
-    holiday_date = datetime.datetime(2023, 4, 6)
-    holiday_name = "Independance Day"
+    upcoming_holiday = datetime.datetime(2023, 4, 26)
+    holiday_name = "Independence Day"
 
-    time_diff = holiday_date - datetime.datetime.now()
-    days = time_diff.days
-    hours, remainder = divmod(time_diff.seconds, 3600)
-    minutes, seconds = divmod(remainder, 60)
-
-    if days == 0:
-        time_left = f"{hours:02}:{minutes:02}:{seconds:02} hours"
-    else:
-        time_left = f"{days} days and {hours:02}:{minutes:02}:{seconds:02} hours"
+    time_until = upcoming_holiday - datetime.datetime.now()
 
     print(
-        f"Today is {datetime.date.today()}, and the next upcoming holiday is {holiday_name} in {time_left}.")
+        f"The next holiday is {holiday_name} in {time_until.days} days and {time_until.seconds//3600}:{(time_until.seconds//60)%60}:{time_until.seconds%60} hours.")
 
 
 next_holiday()
+
+# exercise 8
+# Given an age in seconds, calculate how old someone would be on:
+# Earth: orbital period 365.25 Earth days, or 31557600 seconds
+# Mercury: orbital period 0.2408467 Earth years
+# Venus: orbital period 0.61519726 Earth years
+# Mars: orbital period 1.8808158 Earth years
+# Jupiter: orbital period 11.862615 Earth years
+# Saturn: orbital period 29.447498 Earth years
+# Uranus: orbital period 84.016846 Earth years
+# Neptune: orbital period 164.79132 Earth years
+# So if you are told someone is 1,000,000,000 seconds old,
+# the function should output that they are 31.69 Earth-years old.
+
+
+def calculate_age(age_in_seconds):
+
+    earth_year = 31557600
+    mercury_year = earth_year * 0.2408467
+    venus_year = earth_year * 0.61519726
+    mars_year = earth_year * 1.8808158
+    jupiter_year = earth_year * 11.862615
+    saturn_year = earth_year * 29.447498
+    uranus_year = earth_year * 84.016846
+    neptune_year = earth_year * 164.79132
+
+    age_in_earth_years = age_in_seconds / earth_year
+
+    age_in_mercury_years = age_in_seconds / mercury_year
+    age_in_venus_years = age_in_seconds / venus_year
+    age_in_mars_years = age_in_seconds / mars_year
+    age_in_jupiter_years = age_in_seconds / jupiter_year
+    age_in_saturn_years = age_in_seconds / saturn_year
+    age_in_uranus_years = age_in_seconds / uranus_year
+    age_in_neptune_years = age_in_seconds / neptune_year
+
+    print(f"Age in Earth years: {age_in_earth_years:.2f}")
+    print(f"Age in Mercury years: {age_in_mercury_years:.2f}")
+    print(f"Age in Venus years: {age_in_venus_years:.2f}")
+    print(f"Age in Mars years: {age_in_mars_years:.2f}")
+    print(f"Age in Jupiter years: {age_in_jupiter_years:.2f}")
+    print(f"Age in Saturn years: {age_in_saturn_years:.2f}")
+    print(f"Age in Uranus years: {age_in_uranus_years:.2f}")
+    print(f"Age in Neptune years: {age_in_neptune_years:.2f}")
+
+
+calculate_age(1000000000)
+
+# Exercise 9 : Faker Module
+
+# Instructions
+
+# Install the faker module, and take a look at the documentation and learn how to properly implement faker in your code.
+# Create an empty list called users. Tip: It should be a list of dictionaries.
+# Create a function that adds new dictionaries to the users list. Each user has the following keys: name, adress, langage_code.
+# Use faker to populate them with fake data.
+
+
+fake = Faker()
+
+users = []
+
+
+def add_user():
+    user = {
+        'name': fake.name(),
+        'address': fake.address(),
+        'language_code': fake.language_code()
+    }
+    users.append(user)
+
+
+add_user()
+print(users)
