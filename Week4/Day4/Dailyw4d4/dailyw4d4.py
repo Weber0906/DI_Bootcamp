@@ -1,3 +1,4 @@
+from random import choice
 import random
 import requests
 import psycopg2
@@ -22,17 +23,47 @@ cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS countries
                   (name text, capital text, flag text, subregion text, population integer)''')
 
-# Insert data into table
-for country in random_countries:
-    name = country['name']['common']
-    capital = country['capital'][0]
-    flag_dict = country.get('flags', {})
-    flag_url = flag_dict.get('png', '')
-    subregion = country['subregion']
-    population = country['population']
-    cursor.execute("INSERT INTO countries VALUES (%s, %s, %s, %s, %s)",
-                   (name, capital, flag_url, subregion, population))
 
-# Commit changes and close connection
-conn.commit()
-conn.close()
+def get_data(url) -> list[dict]:
+    response = requests.get(url)
+    data = response.json()
+    return data
+
+
+def get_random_instances(data_list: list, n: int):
+
+    instances = []
+    for _ in range(n):
+        random_inst = choice(data_list)
+        instances.append(random_inst)
+
+    return instances
+
+
+def extract(instance: dict):
+
+    try:
+        name = instance['name']['common']
+        capital = instance['capital'][0]
+        flag_emoji = instance['flag']
+        flag_url = instance['flags']['png']
+        subregion = instance['subregion']
+        population = instance['population']
+
+        return name, capital, flag_emoji, flag_url, subregion, population
+
+    except KeyError:
+        return None
+
+
+def preprocess(instances: list[dict]):
+
+    preprocessed = []
+
+    for instance in instances:
+        preprocessed_inst = extract(instance)
+        if preprocessed_inst is None:
+            continue
+        preprocessed.append(preprocessed_inst)
+
+    return preprocessed
