@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 
 # Create your views here.
@@ -37,3 +37,7 @@ def animal(request, id: int):
     context = {'animal': animal}
 
     return render(request, 'animal.html', context)
+
+def animals(request):
+    response = redirect('/redirect-success/')
+    return response
