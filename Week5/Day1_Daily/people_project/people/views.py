@@ -1,0 +1,13 @@
+from django.shortcuts import render
+from .models import Person
+from .data import data
+
+
+def person_list(request):
+    people = Person.objects.all().order_by('age')
+    return render(request, 'people/person_list.html', {'data': data})
+
+
+def person_detail(request, id):
+    person = Person.objects.get(id=id)
+    return render(request, 'people/person_detail.html', {'person': data})

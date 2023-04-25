@@ -1,0 +1,6 @@
+<h1>{{ family.name }}</h1>
+<ul>
+{% for animal in animals %}
+    <li><a href="/animal/{{ animal.pk }}">{{ animal }}</a></li>
+{% endfor %}
+</ul>
