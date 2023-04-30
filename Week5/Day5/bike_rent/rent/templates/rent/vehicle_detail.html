@@ -1,0 +1,18 @@
+{% extends 'rent/base.html' %}
+
+{% block title %}Vehicle Details{% endblock %}
+
+{% block content %}
+    <h1>Vehicle Details</h1>
+    <p><strong>Type:</strong> {{ vehicle.vehicle_type.name }}</p>
+    <p><strong>Date Created:</strong> {{ vehicle.date_created }}</p>
+    <p><strong>Real Cost:</strong> {{ vehicle.real_cost }}</p>
+    <p><strong>Size:</strong> {{ vehicle.size.name }}</p>
+    
+    <h2>Rental Status</h2>
+    {% if vehicle.is_rented %}
+        <p><strong>Status:</strong> Currently rented</p>
+    {% else %}
+        <p><strong>Status:</strong> Available for rent</p>
+    {% endif %}
+{% endblock %}

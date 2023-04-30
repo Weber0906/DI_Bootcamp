@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bike Store Rental{% endblock %}</title>
+    <!-- Add your CSS and JavaScript includes here -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'rent:rental_list' %}">Rental List</a></li>
+
+                <li><a href="{% url 'rent:rental_create' %}">Add a Rental</a></li>
+                
+                <li><a href="{% url 'rent:customer_list' %}">Customers List</a></li>
+
+                <li><a href="{% url 'rent:customer_create' %}">Add a Customer</a></li>
+                
+                <li><a href="{% url 'rent:vehicle_list' %}">Vehicle List</a></li>
+
+                <li><a href="{% url 'rent:vehicle_create' %}">Add a Vehicle</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add your footer content here -->
+    </footer>
+</body>
+</html>

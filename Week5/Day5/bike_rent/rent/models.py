@@ -33,9 +33,17 @@ class Vehicle(models.Model):
     def __str__(self):
         return f"{self.vehicle_type.name} - {self.pk}"
 
+    def get_latest_rental(self):
+        return self.rental_set.order_by('-rental_date').first()
+
+    @property
+    def is_rented(self):
+        latest_rental = self.get_latest_rental()
+        return latest_rental and not latest_rental.return_date
+
 class Rental(models.Model):
     rental_date = models.DateField()
-    return_date = models.DateField()
+    return_date = models.DateField(null=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
 

@@ -1,0 +1,29 @@
+{% extends 'rent/base.html' %}
+
+{% block title %}Vehicle List{% endblock %}
+
+{% block content %}
+    <h1>Vehicle List</h1>
+
+    {% for category in vehicle_category_list %}
+        <h2>{{ category.name }}</h2>
+        {% if vehicle_list %}
+            <ul>
+                {% for vehicle in vehicle_list %}
+                    {% if vehicle.vehicle_type.name == category.name %}
+                        <li>
+                            <a href="{% url 'rent:vehicle_detail' vehicle.pk %}">{{ vehicle }}</a>
+                            {% if vehicle.is_rented %}
+                                (Currently Rented)
+                            {% else %}
+                                (Available)
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No {{ category.name }} found.</p>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

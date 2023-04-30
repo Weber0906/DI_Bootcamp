@@ -1,0 +1,16 @@
+{% extends 'rent/base.html' %}
+
+{% block title %}Customer List{% endblock %}
+
+{% block content %}
+    <h1>Customer List</h1>
+    {% if customer_list %}
+        <ul>
+            {% for customer in customer_list %}
+                <li><a href="{% url 'rent:customer_detail' customer.pk %}">{{ customer }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No customers found.</p>
+    {% endif %}
+{% endblock %}

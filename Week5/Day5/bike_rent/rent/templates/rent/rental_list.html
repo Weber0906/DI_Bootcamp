@@ -1,0 +1,23 @@
+{% extends 'rent/base.html' %}
+
+{% block title %}Rental List{% endblock %}
+
+{% block content %}
+    <h1>Rental List</h1>
+    {% if rental_list %}
+        <ul>
+            {% for rental in rental_list %}
+                <li>
+                    <a href="{% url 'rent:rental_detail' rental.pk %}">Rental #{{ rental.pk }}</a>
+                    {% if rental.return_date %}
+                        (Returned on: {{ rental.return_date }})
+                    {% else %}
+                        (Not yet returned)
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No rentals found.</p>
+    {% endif %}
+{% endblock %}
