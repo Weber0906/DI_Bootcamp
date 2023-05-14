@@ -1,34 +1,22 @@
 from django.shortcuts import render
+from django.views import View
+from django.http import HttpResponse
 from .models import Person
 
-# Create your views here.
+class PhoneNumberView(View):
+    def get(self, request, phone_number):
+        try:
+            person = Person.objects.get(phone_number=phone_number)
+            context = {'person': person}
+            return render(request, 'person_info.html', context)
+        except Person.DoesNotExist:
+            return HttpResponse("No person found with the given phone number.")
 
-
-def search(model, value):
-
-    result = None
-    try:
-        model_instance = model.objects.get(name=value)
-        result = model_instance
-
-    except model.DoesNotExist:
-        pass
-    try:
-        model_instance = model.objects.get(phone_number=value)
-        result = model_instance
-    except model.DoesNotExist:
-        pass
-
-    return result
-
-
-def search_person(request, search_value: str):
-
-    context = {}
-
-    person_info = search(Person, search_value)
-
-    if person_info is not None:
-        context = {'person': person_info}
-
-    return render(request, 'person_info.html', context)
+class NameView(View):
+    def get(self, request, name):
+        try:
+            person = Person.objects.get(name=name)
+            context = {'person': person}
+            return render(request, 'person_info.html', context)
+        except Person.DoesNotExist:
+            return HttpResponse("No person found with the given name.")
