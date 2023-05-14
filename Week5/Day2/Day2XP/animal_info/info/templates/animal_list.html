@@ -1,7 +1,7 @@
 <h1>Animal List</h1>
 <ul>
   {% for animal in animals %}
-    <li><a href="/animal/{{ animal.id }}/">{{ animal.name }}</a></li>
+    <li><a href="/animal/{{ animal.id }}/">{{ animal.name }}</a> (<a href="/family/{{ animal.family.id }}/">{{ animal.family.name }}</a>) </li>
   {% empty %}
     <li>No animals found.</li>
   {% endfor %}

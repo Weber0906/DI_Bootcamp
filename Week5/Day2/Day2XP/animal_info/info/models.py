@@ -11,6 +11,7 @@ class Family(models.Model):
 
 
 class Animal(models.Model):
+    name = models.CharField(max_length=100, default='Unknown')
     legs = models.PositiveIntegerField()
     weight = models.FloatField()
     height = models.FloatField()
@@ -18,4 +19,5 @@ class Animal(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.family} - Animal #{self.pk}"
+        return f"{self.family} - {self.name} - Animal #{self.pk}"
+
