@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CategoryForm, GifForm #LikeForm
 from .models import Category, Gif
 from django.http import HttpResponse
@@ -67,15 +67,11 @@ def add_category_view(request):
 
 def gifs_view(request, gif_id):
     gifs_all = Gif.objects.get(id=gif_id)
-    # gifs_all = Gif.objects.all()
-    # like_dislike_forms = [
-    #     LikeForm(initial={'gif': gif_intsance}) for gif_intsance in gifs_all]
-
-    # gifs_forms = list(zip(gifs_all))   #like_dislike_forms
-
-    # context = {'gifs_forms': gifs_forms}
-
     return render(request, 'gifs/gifs_all.html')
+
+def gif_view(request, gif_id):
+    gif = get_object_or_404(Gif, id=gif_id)
+    return render(request, 'gifs/gif.html', {'gif': gif})
 
 def category_view(request, category_id):
     category = Category.objects.get(id=category_id)
@@ -124,3 +120,20 @@ def populate_gifs(request):
                 category_obj.gifs.add(gif_obj)
 
     return HttpResponse('Database populated successfully!')
+
+def increment_likes(request, gif_id):
+    gif = Gif.objects.get(id=gif_id)
+    gif.likes += 1
+    gif.save()
+    return redirect('gif_view', gif_id=gif_id)
+
+def decrement_likes(request, gif_id):
+    gif = Gif.objects.get(id=gif_id)
+    gif.likes -= 1
+    gif.save()
+    update_likes = gif.likes
+    return redirect('gif_view', gif_id=gif_id)
+
+def positive_likes_view(request):
+    gifs = Gif.objects.filter(likes__gt=0).order_by('-likes')
+    return render(request, 'gifs/positive_likes.html', {'gifs': gifs})

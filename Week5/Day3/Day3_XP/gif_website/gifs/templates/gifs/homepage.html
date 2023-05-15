@@ -9,10 +9,14 @@
         <a href="{% url 'add_gif' %}">Add New GIF</a>
         <a href="{% url 'add_category' %}">Add New Category</a>
         <a href="{% url 'categories_view' %}">View Categories</a>
+        <a href="{% url 'positive_likes_view' %}">Positive Likes</a>  <!-- New line -->
+    </nav>
     </nav>
     <hr>
     {% for gif in gifs %}
+        <a href="{% url 'gif_view' gif.id %}">
         <img src="{{ gif.url }}" alt="{{ gif.title }}" width="200">
+        </a>
     {% endfor %}
     <hr>
     <h2>Categories:</h2>

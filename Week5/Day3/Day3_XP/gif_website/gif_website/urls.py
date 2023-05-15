@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from gifs.views import add_gif_view, add_category_view, gifs_view, homepage, category_view, categories_view, populate_gifs
+from gifs.views import (
+    add_gif_view, 
+    add_category_view, 
+    gif_view, homepage, 
+    category_view, 
+    categories_view, 
+    populate_gifs,
+    increment_likes,
+    decrement_likes,
+    positive_likes_view,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +35,9 @@ urlpatterns = [
     path('add_category/', add_category_view, name='add_category'),
     path('category/<int:category_id>/', category_view, name='category_view'),
     path('categories/', categories_view, name='categories_view'),
-    path('gif/<int:gif_id>/', gifs_view, name='gifs_view'),
+    path('gif/<int:gif_id>/', gif_view, name='gif_view'),
     path('populate_gifs/', populate_gifs, name='populate_gifs'),
-
+    path('gifs/<int:gif_id>/increment_likes/', increment_likes, name='increment_likes'),
+    path('gifs/<int:gif_id>/decrement_likes/', decrement_likes, name='decrement_likes'),
+    path('positive_likes/', positive_likes_view, name='positive_likes_view'),
 ]

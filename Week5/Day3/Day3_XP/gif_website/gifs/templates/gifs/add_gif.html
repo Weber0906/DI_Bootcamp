@@ -7,6 +7,12 @@
     <title>Add Gif</title>
 </head>
 <body>
+    <h1>Add Gif</h1>
+    <nav>
+        <a href="{% url 'add_gif' %}">Add New GIF</a>
+        <a href="{% url 'add_category' %}">Add New Category</a>
+        <a href="{% url 'categories_view' %}">View Categories</a>
+    </nav>
     <form method="post">
         {%csrf_token%}
         {{form}}

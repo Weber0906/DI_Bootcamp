@@ -7,10 +7,13 @@
     <h1>Category: {{ category.name }}</h1>
     <nav>
         <a href="{% url 'categories_view' %}">Back to Categories</a>
+        <a href="{% url 'homepage' %}">Back to Homepage</a>
     </nav>
     <hr>
     {% for gif in gifs %}
+    <a href="{% url 'gif_view' gif.id %}">
         <img src="{{ gif.url }}" alt="{{ gif.title }}" width="200">
+        </a>
     {% endfor %}
 </body>
 </html>

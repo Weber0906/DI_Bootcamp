@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GIFs with Positive Likes</title>
+</head>
+<body>
+    <h1>GIFs with Positive Likes</h1>
+    <nav>
+        <a href="{% url 'homepage' %}">Back to Homepage</a>
+    </nav>
+    <hr>
+    {% if gifs %}
+        <ul>
+            {% for gif in gifs %}
+                <li>{{ gif.title }} - Likes: {{ gif.likes }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No GIFs with positive likes found.</p>
+    {% endif %}
+</body>
+</html>
