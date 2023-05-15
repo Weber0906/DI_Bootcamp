@@ -1,0 +1,103 @@
+{% extends 'todo_list/home.html' %}
+
+{% load todo_filters %}
+
+{% block content %}
+  <h2>Todo List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>UNCOMPLETED TODOS</th>
+        <th>COMPLETED TODOS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h3>Uncompleted Todos</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Date Created</th>
+                <th>Deadline Date</th>
+                <th>Actions</th>
+                <th>Alerts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for todo in todos %}
+                {% if not todo.has_been_done %}
+                  <tr>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.details }}</td>
+                    <td>{{ todo.date_creation|date:"F d, Y" }}</td>
+                    <td>{{ todo.deadline_date|date:"F d, Y" }}</td>
+                    <td>
+                      <a href="{% url 'mark_todo_done' todo.id %}">DONE</a>
+                    </td>
+                    <td>
+                        {% if todo|has_deadline_passed %}
+                          <span class="alert">Deadline Passed!</span>
+                        {% elif todo|is_deadline_close %}
+                          <span class="alert">Deadline Approaching!</span>
+                        {% elif todo|is_deadline_far %}
+                          <span class="alert">Deadline Far Away</span>
+                        {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% empty %}
+                <tr>
+                  <td colspan="5">No uncompleted todos found.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <h3>Completed Todos</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Date Created</th>
+                <th>Deadline Date</th>
+                <th>Date Completion</th>
+                <th>Completion Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for todo in todos %}
+                {% if todo.has_been_done %}
+                  <tr>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.details }}</td>
+                    <td>{{ todo.date_creation|date:"F d, Y" }}</td>
+                    <td>{{ todo.deadline_date|date:"F d, Y" }}</td>
+                    <td>{{ todo.date_completion|date:"F d, Y" }}</td>
+                    <td>
+                      {% if todo|is_completed_before_deadline %}
+                        Congratulations!
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endif %}
+              {% empty %}
+                <tr>
+                  <td colspan="6">No completed todos found.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
+
+
+
+

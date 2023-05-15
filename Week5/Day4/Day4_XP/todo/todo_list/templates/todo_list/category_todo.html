@@ -1,0 +1,31 @@
+{% extends 'todo_list/home.html' %}
+
+{% block content %}
+  <h1>{{ category.name }} Tasks</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Details</th>
+        <th>Date Created</th>
+        <th>Deadline Date</th>
+        <th>Date Completion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for todo in todos %}
+        <tr>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.details }}</td>
+          <td>{{ todo.date_creation|date:"F d, Y" }}</td>
+          <td>{{ todo.deadline_date|date:"F d, Y" }}</td>
+          <td>{{ todo.date_completion|date:"F d, Y" }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No tasks found for this category.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

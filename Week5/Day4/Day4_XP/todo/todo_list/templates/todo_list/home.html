@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <nav>
+    <a href="{% url 'todo' %}">Add Task</a>
+    <a href="{% url 'display_todos' %}">To-Do List</a>
+    <a href="{% url 'category_list' %}">Categories</a>
+
+  </nav>
+
+  <h1>Welcome to Your To-Do List</h1>
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'todo_list/home.html' %}
+
+{% block content %}
+<body>
+  <h1>Categories</h1>
+  <ul>
+    {% for category in categories %}
+      <li><a href="{% url 'category_todo' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+{% endblock %}

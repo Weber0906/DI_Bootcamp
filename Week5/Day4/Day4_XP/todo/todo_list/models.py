@@ -1,26 +1,21 @@
 from django.db import models
-import datetime
-
-# Create your models here.
-
 
 class Category(models.Model):
-    name = models.CharField(max_length=50)
-    image = models.URLField()
-
-    def __str__(self) -> str:
-        return f'{self.name}'
-
-
-class To_do(models.Model):
-
-    title = models.CharField(max_length=50)
-    details = models.CharField(max_length=100)
-    has_been_done = models.BooleanField(default=False)
-    date_creation = models.DateField()
-    date_completion = models.DateTimeField()
-    deadline_date = models.DateTimeField()
-    category = models.ForeignKey(Category)
+    name = models.CharField(max_length=100)
+    image = models.URLField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.title}, {self.uploader_name}'
+        return self.name
+
+class Todo(models.Model):
+    title = models.CharField(max_length=200)
+    details = models.TextField()
+    has_been_done = models.BooleanField(default=False)
+    date_creation = models.DateField(auto_now_add=True)
+    date_completion = models.DateField(null=True, blank=True)
+    deadline_date = models.DateField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)  # Add on_delete argument here
+
+    def __str__(self):
+        return self.title
+
