@@ -5,11 +5,11 @@ from django.db import models
 
 class Gif(models.Model):
 
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=150)
     url = models.URLField()
-    uploader_name = models.CharField(max_length=50)
+    uploader_name = models.CharField(max_length=150)
     created_art = models.DateTimeField(auto_now_add=True)
-    likes = models.IntegerField(default=0)
+    # likes = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.title}, {self.uploader_name}'

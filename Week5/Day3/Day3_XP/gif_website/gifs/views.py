@@ -1,9 +1,14 @@
 from django.shortcuts import render
-from .forms import CategoryForm, GifForm, LikeForm
+from .forms import CategoryForm, GifForm #LikeForm
 from .models import Category, Gif
 from django.http import HttpResponse
+import requests
 
 # Add new GIF view
+
+def homepage(request):
+    gifs = Gif.objects.all()
+    return render(request, 'gifs/homepage.html', {'gifs': gifs})
 
 
 def add_gif_view(request):
@@ -60,14 +65,62 @@ def add_category_view(request):
     return render(request, 'gifs/add_category.html', context)
 
 
-def gifs_view(request):
+def gifs_view(request, gif_id):
+    gifs_all = Gif.objects.get(id=gif_id)
+    # gifs_all = Gif.objects.all()
+    # like_dislike_forms = [
+    #     LikeForm(initial={'gif': gif_intsance}) for gif_intsance in gifs_all]
 
-    gifs_all = Gif.objects.all()
-    like_dislike_forms = [
-        LikeForm(initial={'gif': gif_intsance}) for gif_intsance in gifs_all]
+    # gifs_forms = list(zip(gifs_all))   #like_dislike_forms
 
-    gifs_forms = list(zip(gifs_all, like_dislike_forms))
+    # context = {'gifs_forms': gifs_forms}
 
-    context = {'gifs_forms': gifs_forms}
+    return render(request, 'gifs/gifs_all.html')
 
-    return render(request, 'gifs/gifs_all.html', context)
+def category_view(request, category_id):
+    category = Category.objects.get(id=category_id)
+    gifs = category.gifs.all()
+    return render(request, 'gifs/category.html', {'category': category, 'gifs': gifs})
+
+
+def categories_view(request):
+    categories = Category.objects.all()
+    return render(request, 'gifs/categories.html', {'categories': categories})
+
+import requests
+
+def populate_gifs(request):
+    api_key = 'hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My'
+    categories = [
+        "Funny",
+        "Cute",
+        "Sports",
+        "Movies",
+        "Music",
+        "Animals",
+        "Gaming",
+        "Celebrities",
+        "Nature",
+        "Memes",
+    ]
+    
+    for category in categories:
+        category_query = category.replace(' ', '+')
+        endpoint = f'https://api.giphy.com/v1/gifs/search?q={category_query}&rating=g&api_key={api_key}&limit=100'
+        
+        response = requests.get(endpoint)
+        if response.status_code == 200:
+            data = response.json()
+            gifs = data['data']
+
+            for gif in gifs:
+                title = gif['title']
+                url = gif['images']['original']['url']
+                uploader_name = gif['username']
+
+                gif_obj, _ = Gif.objects.get_or_create(title=title, url=url, uploader_name=uploader_name)
+
+                category_obj, _ = Category.objects.get_or_create(name=category)
+                category_obj.gifs.add(gif_obj)
+
+    return HttpResponse('Database populated successfully!')

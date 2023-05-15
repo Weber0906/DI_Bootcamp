@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category: {{ category.name }}</title>
+</head>
+<body>
+    <h1>Category: {{ category.name }}</h1>
+    <nav>
+        <a href="{% url 'categories_view' %}">Back to Categories</a>
+    </nav>
+    <hr>
+    {% for gif in gifs %}
+        <img src="{{ gif.url }}" alt="{{ gif.title }}" width="200">
+    {% endfor %}
+</body>
+</html>

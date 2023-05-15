@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GIFs Homepage</title>
+</head>
+<body>
+    <h1>GIFs Homepage</h1>
+    <nav>
+        <a href="{% url 'add_gif' %}">Add New GIF</a>
+        <a href="{% url 'add_category' %}">Add New Category</a>
+        <a href="{% url 'categories_view' %}">View Categories</a>
+    </nav>
+    <hr>
+    {% for gif in gifs %}
+        <img src="{{ gif.url }}" alt="{{ gif.title }}" width="200">
+    {% endfor %}
+    <hr>
+    <h2>Categories:</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'category_view' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

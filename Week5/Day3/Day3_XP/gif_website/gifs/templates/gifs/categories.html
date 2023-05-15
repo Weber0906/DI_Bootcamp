@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categories</title>
+</head>
+<body>
+    <h1>Categories</h1>
+    <nav>
+        <a href="{% url 'add_gif' %}">Add New GIF</a>
+        <a href="{% url 'add_category' %}">Add New Category</a>
+    </nav>
+    <hr>
+    {% for category in categories %}
+        <h2><a href="{% url 'category_view' category.id %}">{{ category.name }}</a></h2>
+    {% endfor %}
+</body>
+</html>
