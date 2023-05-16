@@ -1,0 +1,12 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+{% include 'partials/navbar.html' %}
+
+<h2>Add a Director</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Add Director</button>
+</form>
+{% endblock %}
