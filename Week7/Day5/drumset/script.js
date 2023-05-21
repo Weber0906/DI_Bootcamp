@@ -7,29 +7,47 @@ function playSound(sound) {
   audio.play();
 }
 
+// Map to store the key-sound mappings
+const keySoundMap = {};
+
 // Add event listeners to drums
 drums.forEach((drum) => {
-  drum.addEventListener('click', function () {
-    const sound = this.getAttribute('data-sound');
-    playSound(sound);
+    const sound = drum.getAttribute('data-sound');
+    const key = drum.getAttribute('data-key');
+  
+// Add the key-sound mapping to the map
+    keySoundMap[key] = sound;
 
-    // Add active class
-    this.classList.add('active');
+    drum.addEventListener('click', function () {
+      playSound(sound);
 
-    // Remove active class after a certain duration
-    setTimeout(() => {
-      this.classList.remove('active');
-    }, 100); // Adjust the duration (in milliseconds) as needed
-  });
+      this.classList.add('active');
+
+      setTimeout(() => {
+        this.classList.remove('active');
+      }, 100);
+    });
 });
 
 // Add keyboard event listener
 document.addEventListener('keydown', function (event) {
   const keyPressed = event.key.toLowerCase();
-  const drum = document.querySelector(`[data-key="${keyPressed}"]`);
 
-  if (drum) {
-    const sound = drum.getAttribute('data-sound');
-    playSound(sound);
+  if (keySoundMap.hasOwnProperty(keyPressed)) {
+    const sound = keySoundMap[keyPressed];
+    const drum = document.querySelector(`[data-key="${keyPressed}"]`);
+
+    if (drum) {
+      playSound(sound);
+
+      // Add active class
+      drum.classList.add('active');
+
+      // Remove active class after a certain duration
+      setTimeout(() => {
+        drum.classList.remove('active');
+      }, 100);
+    }
   }
 });
+

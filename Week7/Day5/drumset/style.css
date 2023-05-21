@@ -5,19 +5,96 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  background-image: url(background.jpeg);
+  background-size: cover;
+  background-position: center;
+}
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px; /* Adjust the width as needed */
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(222, 218, 212);
+  border-radius: 5%;
 }
 
 .drum {
+    display: flex;
+    flex-direction: column;
     width: 150px;
     height: 150px;
-    background-color: #000;
+    border-radius: 5%;
     margin: 10px;
+    /* background-color: darkgrey; */
     color: #fff;
     cursor: pointer;
     text-align: center;
+    justify-content: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease-in-out;
   }
 
-  .drum.active {
-    background-color: #d0cbcb; /* Update with your desired active color */
+  #drum-boom {
+    background-color: rgb(175, 37, 37);
+    
   }
+  
+  #drum-clap {
+    background-color: rgb(255, 140, 0);
+  }
+
+  #drum-hihat {
+    background-color: green;
+  }
+
+  #drum-kick {
+    background-color: #ffdd00;
+  }
+
+  #drum-open {
+    background-color:#a200ff ;
+  }
+
+  #drum-ride {
+    background-color: #808080;
+  }
+
+  #drum-snare {
+    background-color: rgb(102, 102, 219) ;
+  }
+
+  #drum-tink {
+    background-color: #ff80ff;
+  }
+
+  #drum-tom {
+    background-color: yellow;
+  }
+
+
+  #drum-boom.active,
+  #drum-clap.active,
+  #drum-hihat.active,
+  #drum-kick.active,
+  #drum-open.active,
+  #drum-ride.active,
+  #drum-snare.active,
+  #drum-tink.active,
+  #drum-tom.active {
+    background-color: #5e5c5c;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); 
+  }
+
+  .letter {
+    font-size: 32px;
+    color: #292525;
+  }
+
+  .label {
+    font-family: fantasy;
+    font-size: 24px;
+    color: #292525;
+  }
+
