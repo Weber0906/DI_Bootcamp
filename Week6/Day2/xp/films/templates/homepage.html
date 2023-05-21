@@ -1,0 +1,22 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+{% include 'partials/navbar.html' %}
+    <div class="container">
+        <h1>Welcome to IMDI - IMDB For Developers Institute</h1>
+        <!-- Additional content here -->
+        <div class="row">
+            {% for film in films %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ film.title }}</h5>
+                            <p class="card-text">Release Date: {{ film.release_date|date:"F d, Y" }}</p>
+                            <p class="card-text">Director(s): {{ film.director.all|join:", " }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
