@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unbeatable AI Tic Tac Toe</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Unbeatable AI Tic Tac Toe</h1>
+
+  <div class="game-container">
+    <div class="board">
+      <div class="box" id="box0"></div>
+      <div class="box" id="box1"></div>
+      <div class="box" id="box2"></div>
+      <div class="box" id="box3"></div>
+      <div class="box" id="box4"></div>
+      <div class="box" id="box5"></div>
+      <div class="box" id="box6"></div>
+      <div class="box" id="box7"></div>
+      <div class="box" id="box8"></div>
+    </div>
+
+    <div class="controls">
+      <h2>Choose X or O:</h2>
+      <button id="symbolX">X</button>
+      <button id="symbolO">O</button>
+    </div>
+    <select id="levelSelect">
+      <option value="simple">Simple</option>
+      <option value="hard">Hard</option>
+    </select>
+    <div class="message" id="message">
+      <!-- Message about the game result will be displayed here -->
+    </div>
+
+    <button id="restartButton" class="hidden">Restart Game</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
