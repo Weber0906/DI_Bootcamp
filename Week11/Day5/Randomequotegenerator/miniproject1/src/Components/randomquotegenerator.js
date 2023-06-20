@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
-import quotes from './quotes'; // Assuming the quotes file is in the same directory
+import quotes from './quotes';
 
 const QuoteGenerator = () => {
   const [currentQuote, setCurrentQuote] = useState('');
 
   const getRandomQuote = () => {
-    // Generate a random index to get a quote from the quotes array
+    
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const newQuote = quotes[randomIndex];
     
-    // Check if the new quote is the same as the current one, and generate a new quote if they match
+   
     if (newQuote.quote === currentQuote.quote) {
       return getRandomQuote();
     }
     
-    // Update the current quote
+   
     setCurrentQuote(newQuote);
     
-    // Change the background, header, and button colors
-    const colors = ['red', 'blue', 'green', 'yellow']; // Add more colors as desired
+    
+    const colors = ['#FF0000', '#0000FF', '#00FF00', '#FFFF00', '#FFA500', '#800080', '#FFC0CB', '#00FFFF', '#808080', '#A52A2A'];
+
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     document.body.style.backgroundColor = randomColor;
     document.getElementById('quote-header').style.color = randomColor;
     document.getElementById('new-quote-btn').style.backgroundColor = randomColor;
+    
   };
 
   return (
